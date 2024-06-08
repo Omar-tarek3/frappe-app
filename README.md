@@ -6,7 +6,6 @@ This project showcases the deployment of the Frappe Framework along with the ERP
 
 - [Docker Image](#docker-image)
 - [Docker Compose ](#docker-compose)
-- [Features](#features)
 - [Helm Deployment](#helm-deployment)
    - [Values File Modification](#values-file-modification)
    - [job-create-site Template Modification](#job-create-site-template-changes)
