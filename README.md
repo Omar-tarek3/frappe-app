@@ -10,8 +10,8 @@ This project showcases the deployment of the Frappe Framework along with the ERP
 - [Helm Deployment](#helm-deployment)
    - [Values File Modification](#values-file-modification)
    - [job-create-site Template Modification](#job-create-site-template-changes)
-   - [Running the APP](#running-the-app)
-- [Access the app](#access-the-app)
+   - [Run the APP](#running-the-app)
+   - [Access the app](#access-the-app)
 - [Argo CD](#argo-cd)
 
 
@@ -117,7 +117,7 @@ This project showcases the deployment of the Frappe Framework along with the ERP
         ```
 
 
-    ### Running the APP 
+    ### Run the APP 
     - Deploy an NFS server provisioner within a Kubernetes cluster, enabling persistent storage via NFS
         ```
         kubectl create namespace nfs
