@@ -49,6 +49,7 @@ This project showcases the deployment of the Frappe Framework along with the ERP
     ```
     #change image tag
     docker tag custom-hrms omartarekabdelall/frappe:hrms
+
     docker login 
     docker push
     ```
@@ -83,7 +84,7 @@ This project showcases the deployment of the Frappe Framework along with the ERP
           tag: hrms 
           pullPolicy: IfNotPresent
         ```
-    - Ingress Modifications \
+    - Ingress Modifications 
         - Change the ingress Class field to the name of your Ingress controller class
         - enable the ingress svc by changing `enabled` field to `true`
         - modify the host entery to the desired domain name for reaching your Frappe app
