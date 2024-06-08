@@ -50,7 +50,7 @@ This project showcases the deployment of the Frappe Framework along with the ERP
     ```
    Through these steps, you have  customized Frappe ERPNext images to include the desired HRMS app and prepared them for Kubernetes deployment by pushing the images to DockerHub.
 
-2. ## Dcoker Compose 
+2. ## Docker Compose 
     You can have a quick set up and run to the entire application stack to view the app components and interact with it. Ensure you have Docker and Docker Compose installed on your machine.
 
     ### docker-compose file
