@@ -1,17 +1,18 @@
 
-- revise
-- add internal server error
-- argo
 # Frappe ERPNext APP
 This project showcases the deployment of the Frappe Framework along with the ERPNext and HR applications using Docker and Kubernetes. This project focuses on building a custom Docker image for the ERPNext and HR applications for Frappe and deploying them within a Minikube Kubernetes cluster utilizing Helm for orchestration and management.
 
 ## Table of Contents
 
-- [Technology Stack](#technology-stack)
--  [App Architecture](#app-architecture)
--  [Features](#features)
-- [App Overview](#app-overview)
-   - [Docker Compose](#docker-compose)
+- [Docker Image](#docker-image)
+- [Docker Compose ](#docker-compose)
+- [Features](#features)
+- [Helm Deployment](#helm-deployment)
+   - [Values File Modification](#values-file-modification)
+   - [job-create-site Template Modification](#job-create-site-template-changes)
+   - [Running the APP](#running-the-app)
+- [Access the app](#access-the-app)
+- [Argo CD](#argo-cd)
 
 
 1. ## Docker Image
@@ -75,7 +76,7 @@ This project showcases the deployment of the Frappe Framework along with the ERP
     ```
     git clone https://github.com/frappe/helm.git
     ```
-    ### Values.yaml modification
+    ### Values File Modification
     - Use the Built Image
         ```
         image:
@@ -102,7 +103,7 @@ This project showcases the deployment of the Frappe Framework along with the ERP
         
     - enable the `createSite` job by changing `enabled` field to `true`
 
-    ### job-create-site Template changes
+    ### job-create-site Template Modification
     - Add the following command after site creation in order to install the HRMS APP to the bench site and dashbourd.\
      Refer to `helm/erpnext/templates/job-create-site.yaml` line 72.
          ```
@@ -159,15 +160,15 @@ This project showcases the deployment of the Frappe Framework along with the ERP
             #C:\Windows\System32\drivers\etc\hosts entery
             127.0.0.1 erp.cluster.local
             ``` 
-        -  Run the following command to forward port 8000 on your local machine to the port used by the LoadBalancer Ingress service:
-            ```
-            kubectl port-forward svc/my-kong-kong-proxy 8000:443
-            ```
-        - This command will make the Ingress controller accessible at `https://localhost:8000`
+    -  Run the following command to forward port 8000 on your local machine to the port used by the LoadBalancer Ingress service:
+        ```
+        kubectl port-forward svc/my-kong-kong-proxy 8000:443
+        ```
+    - This command will make the Ingress controller accessible at `https://localhost:8000`
 
-        - Navigate to `https://erp.cluster.local` in order to hit the endpoint for the frappe app
+    - Navigate to `https://erp.cluster.local` in order to hit the endpoint for the frappe app
 
-         ![frappe app](https://github.com/Omar-tarek3/Assets/blob/master/frappe-app/frappe-app.png)
+    ![frappe app](https://github.com/Omar-tarek3/Assets/blob/master/frappe-app/frappe-app.png)
 
 
 4. ## Argo CD
