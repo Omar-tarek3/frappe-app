@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frappe-erpnext
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Omar-tarek3/helm
+    targetRevision: main  # or the specific branch/tag
+    path: erpnext  # path to the chart within the repository
+    helm:
+      releaseName: erpnext-hr-app
+      values: |
+        persistence:
+            worker:
+              enabled: true
+              # existingClaim: ""
+              size: 8Gi
+              storageClass: "nfs"
+            logs:
+              # Container based log search and analytics stack recommended
+              enabled: false
+              # existingClaim: ""
+              size: 8Gi
+              storageClass: "nfs"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argo-erpnext
+  syncPolicy:
+    automated:
+      selfHeal: true
+    

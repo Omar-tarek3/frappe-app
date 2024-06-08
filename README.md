@@ -1,3 +1,7 @@
+
+- revise
+- add internal server error
+- argo
 # Frappe ERPNext APP
 This project showcases the deployment of the Frappe Framework along with the ERPNext and HR applications using Docker and Kubernetes. This project focuses on building a custom Docker image for the ERPNext and HR applications for Frappe and deploying them within a Minikube Kubernetes cluster utilizing Helm for orchestration and management.
 
@@ -132,14 +136,21 @@ This project showcases the deployment of the Frappe Framework along with the ERP
             ```
             kubectl logs <frappe-bench-erpnext-new-site-podName> -n erpnext
             ```
+            ![create site logs](https://github.com/Omar-tarek3/Assets/blob/master/frappe-app/create-site.png)
+
         - Verify the creation of the desired sites and apps by executing commands to the `frappe-bench-erpnext-worker-d` pod and navigating to the follwing files:
             ```
             kubectl exec -it <frappe-bench-erpnext-worker-d-podName>  -n erpnext -- sh
 
-            ls sites  #view the created erp.cluster.local site
-            vim /sites/apps.txt #view installed apps (farppe, erpnext, hrms)
+            #view the created erp.cluster.local site
+            ls sites 
 
+            #view installed apps (farppe, erpnext, hrms)
+            vim /sites/apps.txt 
             ```
+
+            ![sites verify](https://github.com/Omar-tarek3/Assets/blob/master/frappe-app/bench%20apps.png)
+
     ### Access the app
     1. ##### Setup DNS Mapping:
         - I added an entery at `C:\Windows\System32\drivers\etc\hosts` file to map the site name configured in ingress resouce rule `erp.cluster.local` to the IP `127.0.0.1` where the Ingress controller runs.
@@ -155,6 +166,9 @@ This project showcases the deployment of the Frappe Framework along with the ERP
         - This command will make the Ingress controller accessible at `https://localhost:8000`
 
         - Navigate to `https://erp.cluster.local` in order to hit the endpoint for the frappe app
+
+         ![frappe app](https://github.com/Omar-tarek3/Assets/blob/master/frappe-app/frappe-app.png)
+
 
 4. ## Argo CD
    This section provides an overview of setting up and configuring Argo.
@@ -176,7 +190,6 @@ This project showcases the deployment of the Frappe Framework along with the ERP
    - Configure an application manifest to hold your Argo configuration and apply this manifest to your local Kubernetes cluster:
    
      ```
-     kubectl apply -f k8s/application.yaml
+     kubectl apply -f ./app.yaml
      ```
-     Refer to `k8s/application.yaml` for an example
-   app.yaml
+     Refer to `app.yaml` to view setup and deployment configuration for the app with Argo
