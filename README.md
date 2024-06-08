@@ -194,3 +194,6 @@ This project showcases the deployment of the Frappe Framework along with the ERP
      kubectl apply -f ./app.yaml
      ```
      Refer to `app.yaml` to view setup and deployment configuration for the app with Argo
+
+    ![Argo](https://github.com/Omar-tarek3/Assets/blob/master/frappe-app/Screenshot%202024-06-08%20164918.png)
+
